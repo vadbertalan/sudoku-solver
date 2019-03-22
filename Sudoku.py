@@ -1,3 +1,5 @@
+# Author: Vad Bertalan
+
 from SudokuCell import SudokuCell
 
 class Sudoku:

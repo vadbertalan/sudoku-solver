@@ -1,3 +1,5 @@
+# Author: Vad Bertalan
+
 from SudokuCell import SudokuCell
 import copy
 
@@ -49,13 +51,6 @@ class SudokuSolver:
             if self.__solution.matrix[i][J].value == item:
                 return False
 
-        # square
-        # start_i, end_i, start_j, end_j = SudokuSolver.get_sector_indexes(SudokuCell.decide_sector(I, J))
-        # for i in range(start_i, end_i):
-        #     for j in range(start_j, end_j):
-        #         if not (i == I and j == J):
-        #             if self.solution.matrix[i][j].value == item:
-        #                 return False
         temp_i = I - I % 3
         temp_j = J - J % 3
         for i in range(3):
@@ -94,13 +89,9 @@ class SudokuSolver:
         else:
             # if we arrived to the last cell
             if level == 80:
-                # print('YAY')
-                # print(self.__solution)
                 self.nr_solution += 1
                 self.solution = copy.deepcopy(self.__solution)
-                # print(self.solution)
                 if self.nr_solution > 1:
-                    # print('Multiple solutions!')
                     self.solution = None
             else:
                 self.__backtracking(level + 1)  # going to next level
@@ -111,11 +102,6 @@ class SudokuSolver:
 
         for col_neighbour in [row[cell.j] for row in self.possibilities]:
             col_neighbour.add(cell.value)
-
-        # start_i, end_i, start_j, end_j = SudokuSolver.get_sector_indexes(cell.sector)
-        # for i in range(start_i, end_i):
-        #     for j in range(start_j, end_j):
-        #         self.possibilities[i][j].add(cell.value)
 
     def __affect_vicinity(self, cell):
         for row_neighbour in self.possibilities[cell.i]:

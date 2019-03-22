@@ -1,3 +1,5 @@
+# Author: Vad Bertalan
+
 import random
 from Sudoku import Sudoku
 from SudokuSolver import SudokuSolver
@@ -107,13 +109,6 @@ class SudokuGen:
             if m[i][J].value == item:
                 return False
 
-        # square
-        # start_i, end_i, start_j, end_j = SudokuSolver.get_sector_indexes(SudokuCell.decide_sector(I, J))
-        # for i in range(start_i, end_i):
-        #     for j in range(start_j, end_j):
-        #         if not (i == I and j == J):
-        #             if self.solution.matrix[i][j].value == item:
-        #                 return False
         temp_i = I - I % 3
         temp_j = J - J % 3
         for i in range(3):
